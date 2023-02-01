@@ -1,0 +1,292 @@
+Names and logins:
+	 Sergio Puertas Pérez (s.puertas@udc.es)
+	 Lucas Grandal Lama (lucas.grandal@udc.es)
+	 Xabier Xoán Carricoba Muñoa (xabier.x.carricoba@udc.es)
+	 
+Group 6.1
+-----------------------------------------------------------------------------
+
+Specs of the laptop used to perform the calculations:
+- CPU: processor AMD Ryzen 7 5800U x16 up to 4,4 GHz
+- RAM Memory: 16 GB
+- Space left: 146 GB
+- Operative System: Pop!_OS 22.04.1 LTS (64 bit)
+- Kernel: 5.19.16-76051916-generic
+- Compilator: gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0
+
+
+In this practice we are studying the complexity and the performance of 2 algorithms: the insertion sort and the quicksort. We are using the methods studied in class.
+
+The time is measured in microseconds (µs). 
+
+If needed, we performed the operations multiple times, making that every set of calculations lasted longer than 500µs to avoid small incorrections due to bad approximations.
+
+For each algorithm, we have created 3 states: the easiest one, with everything ordered beforehand (Ascending), the most complex one, with the numbers from higher to lower (Descending), and a random one, which has every number and position randomly determined (Random). 
+
+Also, in the quicksort algorithm we need to perform with different thresholds. With 1 there are no results to show, because it doesn`t perform anything. 
+
+Every row with an * means that the algorithm was performed 1000 times in order to get the time measurements correctly and having less error in the bounds.
+******************************************************************************
+
+Results of the insertion sort algorithm:
+
+............................................................................
+
+Ascending initialization times
+	   n:          t(n):       t(n)/n^0.7:     t(n)/n:       t(n)/n^1.4:       	     
+*         500          1.6270     0.02099465     0.00325400     0.00027091
+*        1000          3.4390     0.02731695     0.00343900     0.00021699
+*        2000          6.7730     0.03311769     0.00338650     0.00016193
+*        4000         13.3280     0.04011650     0.00333200     0.00012075
+*        8000         26.7830     0.04962451     0.00334788     0.00009195
+*       16000         52.0130     0.05932366     0.00325081     0.00006766
+*       32000        108.2170     0.07597846     0.00338178     0.00005334
+Const = 0.00334
+
+f(n) = n^0.7 is the underestimated tight bound.
+g(n) = n is the adjusted tight bound.   
+h(n) = n^1.4 is the overestimated tight bound.
+
+There can be some anomalous results in the first row, and it's due to the speed of the iteration.
+
+............................................................................
+
+Descending initialization times:
+	   n:          t(n):       t(n)/n^1.7:     t(n)/n^2:     t(n)/n^2.4:       	     
+*        500        281.3960     0.00726221     0.00112558     0.00009371
+        1000       1116.0000     0.00886470     0.00111600     0.00007041
+        2000       4436.0000     0.01084527     0.00110900     0.00005303
+        4000      17687.0000     0.01330921     0.00110544     0.00004006
+        8000      70600.0000     0.01635128     0.00110312     0.00003030
+       16000     284400.0000     0.02027335     0.00111094     0.00002312
+       32000    1188280.0000     0.02607137     0.00116043     0.00001830
+Const = 0.00112
+
+f(n) = n^1.7 is the underestimated tight bound.
+g(n) = n^2 is the adjusted tight bound.   
+h(n) = n^2.4 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+Random initialization times:
+	   n:          t(n):       t(n)/n^1.7:     t(n)/n^2:     t(n)/n^2.4:       	     
+*        500        157.8550     0.00407389     0.00063142     0.00005257
+        1000        584.0000     0.00463888     0.00058400     0.00003685
+        2000       2319.0000     0.00566957     0.00057975     0.00002772
+        4000       9394.0000     0.00706885     0.00058712     0.00002128
+        8000      36249.0000     0.00839543     0.00056639     0.00001556
+       16000     142037.0000     0.01012506     0.00055483     0.00001155
+       32000     596075.0000     0.01307814     0.00058210     0.00000918
+Const = 0.00058
+* = Measured an average of 1000 times
+
+f(n) = n^1.7 is the underestimated tight bound.
+g(n) = n^2 is the adjusted tight bound.   
+h(n) = n^2.4 is the overestimated tight bound.
+
+Thus, t(n) = O(n^2).
+
+The results are very consistent and reliable.
+
+******************************************************************************
+
+Results of the quicksort algorithm with threshold 1:
+
+............................................................................
+
+Ascending initialization times with threshold 1:
+	   n:          t(n):      t(n)/n^0.8:    t(n)/n^1.07:   t(n)/n^1.5:       	     
+*         500         24.9470     0.17291884     0.03229389     0.00223133
+*        1000         51.6800     0.20574179     0.03186563     0.00163427
+*        2000        107.4440     0.24567342     0.03155586     0.00120126
+*        4000        221.5180     0.29091159     0.03098881     0.00087563
+*        8000        455.1870     0.34333483     0.03033078     0.00063614
+        16000        946.0000     0.40982189     0.03002498     0.00046742
+        32000       2029.0000     0.50484966     0.03067408     0.00035445
+Const = 0.03110
+
+f(n) = n^0.8 is the underestimated tight bound.
+g(n) = n^1.07 is the adjusted tight bound.   
+h(n) = n^1.5 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+Descending initialization times with threshold 1:
+	   n:          t(n):      t(n)/n^0.7:    t(n)/n^1.05:   t(n)/n^1.5:       	     
+*         500         26.8230     0.34612132     0.03931777     0.00239912
+*        1000         54.6610     0.43418776     0.03869702     0.00172853
+*        2000        116.1400     0.56788556     0.03971004     0.00129848
+*        4000        234.4880     0.70579508     0.03872199     0.00092690
+*        8000        479.1000     0.88769379     0.03821041     0.00066956
+        16000        981.0000     1.11888389     0.03778705     0.00048472
+        32000       2020.0000     1.41822908     0.03757889     0.00035288
+Const = 0.03857
+
+f(n) = n^0.7 is the underestimated tight bound.
+g(n) = n^1.05 is the adjusted tight bound.   
+h(n) = n^1.5 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+RRandom initialization times with threshold 1:
+	   n:         t(n):       t(n)/n^0.8:    t(n)/n^1.09:   t(n)/n^1.6:       	     
+*         500         47.4000     0.32855066     0.05418774     0.00227733
+*        1000        102.9800     0.40997076     0.05530353     0.00163212
+*        2000        220.7760     0.50480990     0.05569666     0.00115426
+*        4000        468.3870     0.61511574     0.05550849     0.00080781
+         8000       1003.0000     0.75653486     0.05583838     0.00057063
+        16000       2145.0000     0.92924731     0.05609660     0.00040256
+        32000       4413.0000     1.09802934     0.05421512     0.00027321
+Const = 0.05526
+
+f(n) = n^0.8 is the underestimated tight bound.
+g(n) = n^1.09 is the adjusted tight bound.   
+h(n) = n^1.6 is the overestimated tight bound.
+
+The results of t(n) are close to the O(n^1.09), so we could say that t(n)=O(n).
+
+The results are very consistent and reliable, considering that the array is random.
+
+******************************************************************************
+
+Results of the quicksort algorithm with threshold 10:
+
+............................................................................
+
+Ascending initialization times with threshold 10:
+	   n:          t(n):      t(n)/n^0.7:    t(n)/n^1.09:   t(n)/n^1.5:       	     
+*         500         11.3490     0.14644636     0.01297419     0.00101509
+*        1000         23.9940     0.19059112     0.01288554     0.00075876
+*        2000         51.4800     0.25171989     0.01298721     0.00057556
+*        4000        109.8000     0.33049154     0.01301239     0.00043402
+*        8000        232.0860     0.43001732     0.01292055     0.00032435
+        16000        534.0000     0.60905606     0.01396531     0.00026385
+        32000       1084.0000     0.76106946     0.01331729     0.00018937
+Const = 0.01315
+
+f(n) = n^0.7 is the underestimated tight bound.
+g(n) = n^1.09 is the adjusted tight bound.   
+h(n) = n^1.5 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+Descending initialization times with threshold 10:
+	   n:          t(n):      t(n)/n^0.7:    t(n)/n^1.08:   t(n)/n^1.5:       	     
+*         500         15.1240     0.19515859     0.01839836     0.00135273
+*        1000         30.6440     0.24341394     0.01763378     0.00096905
+*        2000         62.8670     0.30739850     0.01711238     0.00070287
+*        4000        132.8800     0.39996098     0.01710940     0.00052525
+*        8000        276.9070     0.51306329     0.01686540     0.00038699
+        16000        573.0000     0.65353768     0.01650840     0.00028312
+        32000       1197.0000     0.84040604     0.01631294     0.00020911
+Const = 0.01713
+
+f(n) = n^0.7 is the underestimated tight bound.
+g(n) = n^1.08 is the adjusted tight bound.   
+h(n) = n^1.5 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+Random initialization times with threshold 10:
+	   n:         t(n):       t(n)/n^0.8:    t(n)/n^1.12:   t(n)/n^1.6:       	     
+*         500         36.3580     0.25201360     0.03449480     0.00174682
+*        1000         80.8780     0.32198112     0.03530453     0.00128183
+*        2000        176.7710     0.40419136     0.03550238     0.00092419
+*        4000        384.9640     0.50555932     0.03557238     0.00066393
+         8000        841.0000     0.63434279     0.03575487     0.00047847
+        16000       1795.0000     0.77762187     0.03511156     0.00033688
+        32000       3881.0000     0.96565871     0.03492816     0.00024027
+Const = 0.03524
+
+f(n) = n^0.8 is the underestimated tight bound.
+g(n) = n^1.12 is the adjusted tight bound.   
+h(n) = n^1.6 is the overestimated tight bound.
+
+The t(n) is close to O(n^1.12), so we can say that t(n) = O(n).
+
+The results are very consistent and reliable, considering that the array is random.
+
+******************************************************************************
+
+Results of the quicksort algorithm with threshold 100:
+
+............................................................................
+
+Ascending initialization times with threshold 100:
+	   n:          t(n):      t(n)/n^0.8:    t(n)/n^1.21:    t(n)/n^1.6:       	     
+*         500          4.6110     0.03196091     0.00250058      0.00022154
+*        1000         10.9020     0.04340164     0.00255568      0.00017279
+*        2000         25.0910     0.05737121     0.00254256      0.00013118
+*        4000         56.2720     0.07389999     0.00246490      0.00009705
+*        8000        126.8530     0.09568167     0.00240194      0.00007217
+*       16000        280.2830     0.12142295     0.00229410      0.00005260
+        32000        619.0000     0.15401771     0.00219008      0.00003832
+Const = 0.00242
+
+f(n) = n^0.8 is the underestimated tight bound.
+g(n) = n^1.21 is the adjusted tight bound.   
+h(n) = n^1.6 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+Descending initialization times with threshold 100:
+	   n:          t(n):      t(n)/n^0.6:    t(n)/n^1.11:    t(n)/n^1.6:       	     
+*         500          8.6900     0.20875543     0.00877330      0.00041751
+*        1000         17.0950     0.27093749     0.00799593      0.00027094
+*        2000         36.5430     0.38210806     0.00791883      0.00019105
+*        4000         79.0360     0.54524157     0.00793484      0.00013631
+*        8000        166.2810     0.75681309     0.00773415      0.00009460
+*       16000        357.3570     1.07307556     0.00770068      0.00006707
+        32000        766.0000     1.51753523     0.00764737      0.00004742
+Const = 0.00796
+
+f(n) = n^0.6 is the underestimated tight bound.
+g(n) = n^1.1 is the adjusted tight bound.   
+h(n) = n^1.6 is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+Random initialization times with threshold 100:
+	   n:          t(n):      t(n)/n^0.8:    t(n)/n^1.12:    t(n)/n^1.5:
+*         500         37.9110     0.26277814     0.03596821       0.00339086
+*        1000         83.7440     0.33339087     0.03655558       0.00264822
+*        2000        182.9750     0.41837696     0.03674838       0.00204572
+*        4000        395.3460     0.51919363     0.03653172       0.00156274
+         8000        893.0000     0.67356493     0.03796564       0.00124801
+        16000       1908.0000     0.82657523     0.03732192       0.00094275
+        32000       3866.0000     0.96192645     0.03479316       0.00067536
+Const = 0.03655
+
+f(n) = n^0.8 is the underestimated tight bound.
+g(n) = n^1.12 is the adjusted tight bound.   
+h(n) = n^1.5 is the overestimated tight bound.
+
+The t(n) is close to O(n^1.12), so we can say that t(n) = O(n).
+
+The results are very consistent and reliable, considering that the array is random.
+
+******************************************************************************
+
+
+CONCLUSIONS
+
+The complexity of the insertion sort algorithm, being O(n^2), is much higher than the complexity of the quicksort algorithm, that it depends on the threshold used. 
+
+The most efficient threshold is THRESHOLD=10, as with THRESHOLD=1 the sorting algorithm doesn't take advantage of the increased speed in small arrays with Selection Sort over Quicksort. With THRESHOLD=100 it is more efficient than THRESHOLD=1 as it does take advantage of the Selection Sort, but the array in this case is not as efficient as passing a smaller one as Selection Sort performs better with 10 than 100 elements.
+
+So, if it would be in our hands, we would choose the quicksort algorithm with THRESHOLD 10, and we would never use the insertion sort algorithm, because, as proved in the current report, it isn't as efficient as the quicksort one. 
+
+
+

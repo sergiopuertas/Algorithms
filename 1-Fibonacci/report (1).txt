@@ -1,0 +1,104 @@
+Names and logins:
+	 Sergio Puertas Pérez (s.puertas@udc.es)
+	 Lucas Grandal Lama (lucas.grandal@udc.es)
+	 Xabier Xoán Carricoba Muñoa (xabier.x.carricoba@udc.es)
+	 
+Group 6.1
+-----------------------------------------------------------------------------
+
+Specs of the laptop used to perform the calculations:
+- CPU: procesador 11th Gen Intel® Core™ i7-1185G7 @ 3.00GHz × 8
+- RAM Memory: 16 GB
+- Space left: 146 GB
+- Operative System: Ubuntu 22.04.1 LTS (64 bit)
+- Kernel: 5.15.0-47-generic
+- Compilator: gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0
+
+
+In this practice we are studying the complexity and the performance of 3 algorithms to find the n number of the Fibonacci Sequence. We are using the methods studied in class.
+
+The time is measured in microseconds (µs). 
+
+If needed, we performed the operations multiple times, making that every set of calculations lasted longer than 500µs to avoid small incorrections due to bad approximations.
+
+******************************************************************************
+
+Results of the first algorithm
+
+	  n:	       t(n):       t(n)/f(n):     t(n)/g(n):     t(n)/h(n):       	     
+*          2           0.021       0.017364       0.008025       0.005253
+*          4           0.036       0.024575       0.005249       0.002249
+*          8           0.121       0.056592       0.002582       0.000474
+*         16           5.594       1.217470       0.002535       0.000085
+          32       12400.000     587.294265       0.002546       0.000003
+
+Constant = 0.0042
+
+(*) corresponds to an average time of 100000 executions of the algorithm
+
+f(n) = 2^n is the underestimated tight bound.
+g(n) = φ^n is the adjusted tight bound.   
+h(n) = 1.1^n is the overestimated tight bound.
+
+Thus, t(n) = O(φ^n).
+
+There may be some anomalous computations regarding cases n : {2,4} as their computations consume very little resources and time, so even applying techiques to improve the veracity of the times measured may fail. It is recommended to be run more than one time.
+
+............................................................................
+
+Results of the second algorithm
+
+	   n:	        t(n):       t(n)/f(n):     t(n)/g(n):     t(n)/h(n):       	     
+*        1000           1.520       0.006051       0.001520       0.000220
+*       10000          15.636       0.009866       0.001564       0.000170
+*      100000         154.138       0.015414       0.001541       0.000134
+      1000000        1725.000       0.027339       0.001725       0.000125
+     10000000       15999.000       0.040188       0.001600       0.000099
+
+Constant = 0.0016
+  
+(*) corresponds to an average time of 1000 executions of the algorithm
+
+f(n) = n^(0.8) is the underestimated tight bound.
+g(n) = n is the adjusted tight bound.  
+h(n) = n*log(n) is the overestimated tight bound.
+
+Thus, t(n) = O(n).           
+
+This case is very consistent and reliable (which can be seen in the t(n)/g(n) column).
+
+............................................................................
+                          
+Results of the third algorithm
+
+	   n:	        t(n):       t(n)/f(n):     t(n)/g(n):     t(n)/h(n):       	     
+*        1000           0.033       0.012655       0.004815       0.001052
+*       10000           0.042       0.013773       0.004538       0.000418
+*      100000           0.052       0.015467       0.004558       0.000166
+*     1000000           0.063       0.017011       0.004577       0.000063
+*    10000000           0.073       0.018260       0.004548       0.000023
+
+Constant = 0.0046
+
+  
+(*) corresponds to an average time of 100000 executions of the algorithm
+
+f(n) = sqrt(log(n)) is the underestimated tight bound
+g(n) = log(n) is the adjusted tight bound.  
+h(n) = n^(0.5) is the overestimated tight bound.
+
+Thus, t(n) = O(n).   
+
+This case is also very consistent as the previous one
+
+******************************************************************************
+
+CONCLUSIONS
+
+As for the results, we can see that the least complex algorithm is the second, and the most one being the third. It wasn't surprising giving that the second algorithm had short (just on eloop with basic arithmetical operations), and the third one contained far more computations. The complexity of the first one is also high due to the long-consumming operations needed for big numbers (in this case, it struggled with just n = 32, while the others held upto n = 100000). 
+
+Moreover, we can see that the most efficient algorithm is the third, the most complex one, as for almost every power of 10 it consumed a similar amount of time, and the worst one regarding performance was the first one by far (previously explained). It was a bit of a surprise, given that the first one only performs one addition, but after analyzing it we found that it had so many recursive calls which made it obvious that it should be the longest one. 
+
+
+
+

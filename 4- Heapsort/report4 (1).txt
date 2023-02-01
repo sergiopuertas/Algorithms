@@ -1,0 +1,136 @@
+Names and logins:
+	 Sergio Puertas Pérez (s.puertas@udc.es)
+	 Lucas Grandal Lama (lucas.grandal@udc.es)
+	 Xabier Xoán Carricoba Muñoa (xabier.x.carricoba@udc.es)
+	 
+Group 6.1
+-----------------------------------------------------------------------------
+
+Specs of the laptop used to perform the calculations:
+- CPU: processor AMD Ryzen 7 5800U x16 up to 4,4 GHz
+- RAM Memory: 16 GB
+- Space left: 146 GB
+- Operative System: Pop!_OS 22.04.1 LTS (64 bit)
+- Kernel: 5.19.16-76051916-generic
+- Compilator: gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0
+
+In this practice we are studying the complexity and the performance of 2 algorithms: the
+creation and the sorting of a heap. We are using the methods studied in class. For sorting 
+the heap, we are testing 3 cases: ascendingly, desceningly and randomly sorted.
+
+The time is measured in microseconds (µs). 
+
+If needed, we performed the operations multiple times, making that every set of 
+calculations lasted longer than 500µs to avoid small incorrections due to bad 
+approximations.
+ 
+Every row with an * means that the algorithm was performed 1000 times in order to get the 
+time measurements correctly and having less error in the bounds.
+
+******************************************************************************
+
+Creating a heap of  of n elements:
+          n:           t(n):       t(n)/f(n):     t(n)/g(n):      t(n)/h(n):
+*         1000         15.4040     0.06132443     0.01540400      0.00273926
+*         2000         28.9440     0.06618119     0.01447200      0.00216407
+*         4000         64.5370     0.08475411     0.01613425      0.00202877
+*         8000        123.2170     0.09293914     0.01540212      0.00162858
+*        16000        247.9330     0.10740843     0.01549581      0.00137779
+*        32000        520.1510     0.12942240     0.01625472      0.00121532
+         64000        954.0000     0.13633407     0.01490625      0.00093718
+        128000       1997.0000     0.16391175     0.01560156      0.00082483
+        256000       3958.0000     0.18658805     0.01546094      0.00068735
+        512000       7918.0000     0.21438753     0.01546484      0.00057813
+Const = 0.01546
+
+f(n) = n^0.8 is the underestimated tight bound.
+g(n) = n is the adjusted tight bound.   
+h(n) = n^1.25 is the overestimated tight bound.
+
+The t(n) is similar to t(n)=O(n)
+
+The times are quite consistent, but sometimes there are anomalous behaviours.
+
+******************************************************************************
+
+Ascendingly sorted array:
+
+Sorting a heap of  of n elements:
+          n:          t(n):        t(n)/f(n):     t(n)/g(n):      t(n)/h(n)
+*         1000        153.0410     0.06244114     0.02543729      0.00556507
+*         2000        381.9720     0.07857617     0.02925209      0.00549453
+          4000        769.0000     0.08042827     0.02736156      0.00441253
+          8000       1599.0000     0.08562444     0.02661926      0.00368567
+         16000       3537.0000     0.09755337     0.02771448      0.00329458
+         32000       7144.0000     0.10200912     0.02648314      0.00270294
+         64000      15011.0000     0.11146562     0.02644463      0.00231728
+        128000      31179.0000     0.12087439     0.02620578      0.00197156
+        256000      65156.0000     0.13233624     0.02621849      0.00169354
+        512000     136176.0000     0.14535328     0.02631599      0.00145942
+Const = 0.02681
+
+
+f(n) = n^0.85*log(n) is the underestimated tight bound.
+g(n) = n^0.98*log(n) is the adjusted tight bound.   
+h(n) = n^1.2*log(n) is the overestimated tight bound.
+
+The t(n) is similar to t(n)=O(n*log(n))
+
+The times are quite consistent, but sometimes there are anomalous behaviours.
+
+******************************************************************************
+
+Descendingly sorted array:
+
+Sorting a heap of  of n elements:
+          n:          t(n):        t(n)/f(n):     t(n)/g(n):      t(n)/h(n)
+*         1000        121.2500     0.04947033     0.02015324      0.00440905
+*         2000        332.3540     0.06836916     0.02545226      0.00478079
+          4000        765.0000     0.08000992     0.02721924      0.00438958
+          8000       1631.0000     0.08733800     0.02715198      0.00375943
+         16000       3528.0000     0.09730514     0.02764396      0.00328620
+         32000       6998.0000     0.09992439     0.02594191      0.00264770
+         64000      14988.0000     0.11129483     0.02640411      0.00231373
+        128000      31587.0000     0.12245612     0.02654870      0.00199736
+        256000      65128.0000     0.13227937     0.02620722      0.00169281
+        512000     137450.0000     0.14671314     0.02656219      0.00147307
+Const = 0.02593
+
+f(n) = n^0.85*log(n) is the underestimated tight bound.
+g(n) = n^0.98*log(n) is the adjusted tight bound.   
+h(n) = n^1.2*log(n) is the overestimated tight bound.
+
+The t(n) is similar to t(n)=O(n*log(n))
+
+The times are quite consistent, but sometimes there are anomalous behaviours.
+
+******************************************************************************
+
+Randomly sorted array:
+
+Sorting a heap of  of n elements:
+          n:          t(n):        t(n)/f(n):     t(n)/g(n):      t(n)/h(n)
+*         1000        196.4610     0.08015662     0.02844064      0.00714397
+*         2000        423.6880     0.08715765     0.02787090      0.00609460
+          4000        847.0000     0.08858614     0.02553035      0.00486010
+          8000       1851.0000     0.09911872     0.02574496      0.00426652
+         16000       4095.0000     0.11294347     0.02643888      0.00381434
+         32000       8811.0000     0.12581221     0.02654302      0.00333365
+         64000      18643.0000     0.13843538     0.02632207      0.00287796
+        128000      39860.0000     0.15452880     0.02648061      0.00252050
+        256000      85095.0000     0.17283370     0.02669270      0.00221179
+        512000     183381.0000     0.19573956     0.02724508      0.00196532
+Const = 0.02673
+
+f(n) = n^0.85*log(n) is the underestimated tight bound.
+g(n) = n*log(n) is the adjusted tight bound.   
+h(n) = n^1.2*log(n) is the overestimated tight bound.
+
+The t(n) is O(n*log(n))
+
+The times are quite consistent, considering that there is quite a lot of randomness
+involved. 
+
+******************************************************************************
+
+After these results, we can confirm that creating a heap runs in time O(n). Also, the complexity barely changes between the different initial cases for the sorting algorithm. The heapsort runs in time O(n*log(n)).

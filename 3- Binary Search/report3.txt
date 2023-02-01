@@ -1,0 +1,67 @@
+Names and logins:
+	 Sergio Puertas Pérez (s.puertas@udc.es)
+	 Lucas Grandal Lama (lucas.grandal@udc.es)
+	 Xabier Xoán Carricoba Muñoa (xabier.x.carricoba@udc.es)
+	 
+Group 6.1
+-----------------------------------------------------------------------------
+
+Specs of the laptop used to perform the calculations:
+- CPU: processor AMD Ryzen 7 5800U x16 up to 4,4 GHz
+- RAM Memory: 16 GB
+- Space left: 146 GB
+- Operative System: Pop!_OS 22.04.1 LTS (64 bit)
+- Kernel: 5.19.16-76051916-generic
+- Compilator: gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0
+
+In this practice we are studying the complexity and the performance of 2 algorithms: the insertion and the finding, in binary search trees. We are using the methods studied in class.
+
+The time is measured in microseconds (µs). 
+
+If needed, we performed the operations multiple times, making that every set of calculations lasted longer than 500µs to avoid small incorrections due to bad approximations.
+ 
+Every row with an * means that the algorithm was performed 1000 times in order to get the time measurements correctly and having less error in the bounds.
+
+******************************************************************************
+
+Insertion of n elements:
+        n:         t(n):         t(n)/f(n):     t(n)/g(n):      t(n)/h(n):
+        8000       1878.0000     0.95108064     0.01392403      0.00029204
+       16000       3976.0000     1.23334221     0.01303609      0.00020294
+       32000      11221.0000     2.14297267     0.01635295      0.00018897
+       64000      17893.0000     2.11329176     0.01164273      0.00009986
+      128000      44036.0000     3.22910732     0.01284381      0.00008177
+      256000      99495.0000     4.54554159     0.01305308      0.00006168
+Const = 0.01348
+
+f(n) = n^0.6*log(n) is the underestimated tight bound.
+g(n) = n^1.07*log(n) is the adjusted tight bound.   
+h(n) = n^1.5*log(n) is the overestimated tight bound.
+
+The t(n) is similar to t(n)=O(n*log(n))
+
+Knowing that there is a lot of randomness involved, the results are pretty consistent. Although it can have anomalous results in the first iteration, but we believe that it is a problem with our machine.
+
+******************************************************************************
+
+Search of n elements:
+        n:         t(n):         t(n)/f(n):     t(n)/g(n):      t(n)/h(n):
+        8000       2138.0000     1.08275315     0.01585175      0.00013534
+       16000       3941.0000     1.22248533     0.01292133      0.00007641
+       32000       9393.0000     1.79386350     0.01368891      0.00005606
+       64000      24683.0000     2.91523951     0.01606089      0.00004555
+      128000      53431.0000     3.91803146     0.01558401      0.00003061
+      256000     117164.0000     5.35276983     0.01537113      0.00002091
+Const = 0.01491
+
+f(n) = n^0.6*log(n) is the underestimated tight bound.
+g(n) = n^1.07*log(n) is the adjusted tight bound.   
+h(n) = n^1.6*log(n) is the overestimated tight bound.
+
+The t(n) is similar to t(n)=O(n*log(n))
+
+Knowing that there is a lot of randomness involved, the results are pretty consistent.
+
+******************************************************************************
+
+After these results, we can conclude that the search algorithm is more or less as complex as the insertion one. The bounds are the same, and knowing that every variable is random, we can confirm that they have the same level of complexity. The find algorithm can take a bit more, because it uses a non-empty tree, while the insertion uses an empty one, but the differences are barely noticeable.
