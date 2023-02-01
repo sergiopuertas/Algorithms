@@ -1,0 +1,98 @@
+
+Name and login:
+	 Sergio Puertas Pérez (s.puertas@udc.es)
+	
+Group 6.1
+-----------------------------------------------------------------------------
+
+Specs of the laptop used to perform the calculations:
+- CPU: procesador 1.4 Ghz Intel Core i5, 4-core
+- RAM Memory: 8 GB
+- Space left: 33.11 GB
+- Operative System: macOS Ventura (13.0) (64 bit)
+- Kernel: Darwin Kernel Version 22.1.0
+- Compilator: gcc (Apple clang version 12.0.5 (clang-1205.0.22.9))
+
+
+In this practice we are studying the complexity and the performance of an algorithm with 3 cases of input arrays. The easiest one, with everything ordered beforehand (Ascending), the most complex one, with the numbers from higher to lower (Descending), and a random one, which has every number and position randomly determined (Random). 
+
+The time is measured in microseconds (µs). 
+
+If needed, we performed the operations multiple times, making that every set of calculations lasted longer than 500µs to avoid small incorrections due to bad approximations.
+
+Every row with an * means that the algorithm was performed 1000 times in order to get the time measurements correctly and having less error in the bounds.
+******************************************************************************
+
+Results of the sorting algorithm:
+
+............................................................................
+
+Sort with ascending initialization
+             n:          t(n):      t(n)/f(n):    t(n)/g(n):    t(n)/h(n):
+*         500         38.9810     0.38273901     0.01420524      0.00194437
+*        1000         64.0300     0.41404406     0.01064257      0.00116693
+*        2000        132.2670     0.56901386     0.01012924      0.00088971
+*        4000        286.2850     0.82623762     0.01018622      0.00071673
+         8000        699.0000     1.36289510     0.01163656      0.00065590
+        16000       1359.0000     1.80083811     0.01064856      0.00048081
+        32000       3123.0000     2.82702437     0.01157711      0.00041875
+Const = 0.01129
+
+
+f(n) = n^0.45 log(n) is the underestimated tight bound.
+g(n) = n^0.98 log(n) is the adjusted tight bound.   
+h(n) = n^1.3 log(n) is the overestimated tight bound.
+
+There can be some anomalous results in the first row, and it's due to the speed of the iteration.
+
+............................................................................
+
+Sort with descending initialization
+             n:          t(n):      t(n)/f(n):    t(n)/g(n):    t(n)/h(n):
+*         500         29.8200     0.29279078     0.01086684      0.00148742
+*        1000         65.7220     0.42498522     0.01092380      0.00119777
+*        2000        135.0880     0.58114983     0.01034528      0.00090868
+*        4000        287.7570     0.83048591     0.01023860      0.00072041
+         8000        685.0000     1.33559820     0.01140350      0.00064276
+        16000       1318.0000     1.74650819     0.01032731      0.00046630
+        32000       2750.0000     2.48937464     0.01019438      0.00036873
+Const = 0.01061
+
+
+f(n) = n^0.45 log(n) is the underestimated tight bound.
+g(n) = n^0.98 log(n) is the adjusted tight bound.   
+h(n) = n^1.3 log(n) is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+............................................................................
+
+Sort with random initialization
+             n:          t(n):      t(n)/f(n):    t(n)/g(n):    t(n)/h(n):
+*         500         38.6250     0.37924359     0.01407551      0.00192661
+*        1000         82.4430     0.53311002     0.01370304      0.00150251
+*        2000        168.3890     0.72441104     0.01289553      0.00113269
+*        4000        354.8700     1.02417851     0.01262653      0.00088843
+         8000        763.0000     1.48768091     0.01270200      0.00071595
+        16000       1510.0000     2.00093124     0.01183174      0.00053423
+        32000       3149.0000     2.85056027     0.01167349      0.00042223
+Const = 0.01279
+
+f(n) = n^0.45 log(n) is the underestimated tight bound.
+g(n) = n^0.98 log(n) is the adjusted tight bound.   
+h(n) = n^1.3 log(n) is the overestimated tight bound.
+
+The results are very consistent and reliable.
+
+******************************************************************************
+
+Thus, t(n) = O(n log n).
+
+
+CONCLUSIONS:
+
+The complexity of this sorting algorithm, is O(nlogn). It can bve easily known as the function sort aux divides de array in 2 halves and then recombines it, being the recurrence relatio of the form:
+T(n) = 2*T(n/2) + O(n);
+It is a very useful method to sort arrays as it isn't a bad standard complexity and the input doesn't higher or lower time measurements (as we can see above, no much difference is seen).
+
+
